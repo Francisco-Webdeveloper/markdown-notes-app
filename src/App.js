@@ -28,7 +28,12 @@ export default function App() {
           gutterSize={15}
           className="split"
         >
-          <Sidebar />
+          <Sidebar
+            newNote={createNewNote}
+            notes={notes}
+            setCurrentNoteId={setCurrentNoteId}
+            currentNoteId={currentNoteId}
+          />
           <Editor />
         </Split>
       ) : (
