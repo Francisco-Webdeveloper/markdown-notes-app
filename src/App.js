@@ -17,7 +17,7 @@ export default function App() {
       id: nanoid(),
       body: "# Type your note's title here",
     };
-    setNotes((prevNotes) => [...prevNotes, newNote]);
+    setNotes((prevNotes) => [newNote, ...prevNotes]);
     setCurrentNoteId(newNote.id);
   }
 
@@ -31,14 +31,20 @@ export default function App() {
   }
 
   function updateNote(text) {
-    setNotes((oldNotes) =>
-      oldNotes.map((oldNote) => {
+    setNotes((oldNotes) => {
+      const newNotes = [];
+      oldNotes.forEach((oldNote) => {
         // return the note in the array whose id matches the currentNoteId we want to update.
-        return oldNote.id === currentNoteId
-          ? { ...oldNote, body: text }
-          : oldNote;
-      })
-    );
+        if (oldNote.id === currentNoteId) {
+          // place the modified note at the top of the notes list
+          return newNotes.unshift({ ...oldNote, body: text });
+          // unmodified ones go to the bottom
+        } else {
+          return newNotes.push(oldNote);
+        }
+      });
+      return newNotes;
+    });
   }
 
   React.useEffect(() => {
