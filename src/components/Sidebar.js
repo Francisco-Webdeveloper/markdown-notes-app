@@ -11,7 +11,14 @@ export default function Sidebar(props) {
         // update the state of currentNoteId to the id of the note we are currently clicking on
         onClick={() => props.setCurrentNoteId(note.id)}
       >
-        <h4 className={classes.textSnippet}>Note {index + 1}</h4>
+        <h4 className={classes.textSnippet}>
+          {note.body
+            // copying just the first line of the text to the title of the note in the sidebar
+            .split("\n")[0]
+            // using regex to eliminate special characters
+            .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/]/gi, "")
+            .toUpperCase()}
+        </h4>
       </div>
     </div>
   ));
