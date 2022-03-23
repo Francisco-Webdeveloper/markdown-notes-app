@@ -5,7 +5,9 @@ import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
 
 export default function App() {
-  const [notes, setNotes] = React.useState([]);
+  const [notes, setNotes] = React.useState(
+    () => JSON.parse(localStorage.getItem("notes")) || []
+  );
   const [currentNoteId, setCurrentNoteId] = React.useState(
     (notes[0] && notes[0].id) || ""
   );
@@ -22,6 +24,7 @@ export default function App() {
   function findCurrentNote() {
     return (
       notes.find((note) => {
+        // return the note in the array whose id matches the currentNoteId we are saving in state
         return note.id === currentNoteId;
       }) || notes[0]
     );
@@ -30,12 +33,17 @@ export default function App() {
   function updateNote(text) {
     setNotes((oldNotes) =>
       oldNotes.map((oldNote) => {
+        // return the note in the array whose id matches the currentNoteId we want to update.
         return oldNote.id === currentNoteId
           ? { ...oldNote, body: text }
           : oldNote;
       })
     );
   }
+
+  React.useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   return (
     <main>
