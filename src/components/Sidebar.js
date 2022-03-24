@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Sidebar.module.css";
+import { BsTrash } from "react-icons/bs";
 
 export default function Sidebar(props) {
   const noteElements = props.notes.map((note, index) => (
@@ -19,6 +20,12 @@ export default function Sidebar(props) {
             .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/]/gi, "")
             .toUpperCase()}
         </h4>
+        <button
+          className={classes.deleteBtn}
+          onClick={(event) => props.deleteNote(event, note.id)}
+        >
+          <BsTrash className={`${classes.ggTrash} ${classes.trashIcon}`} />
+        </button>
       </div>
     </div>
   ));

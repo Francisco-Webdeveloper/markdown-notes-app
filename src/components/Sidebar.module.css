@@ -21,7 +21,7 @@
 
 .newNote {
   cursor: pointer;
-  background-color: #4a4e74;
+  background-color: #334756;
   font-size: 20px;
   border: none;
   color: white;
@@ -40,7 +40,7 @@
 }
 
 .selectedNote {
-  background-color: #4a4e74;
+  background-color: #334756;
 }
 
 .selectedNote .textSnippet {
@@ -53,8 +53,62 @@
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.2rem;
-  color: #4a4e74;
+  color: #334756;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.deleteBtn {
+  display: none;
+  background: none;
+  border: none;
+}
+
+.title:hover > .deleteBtn {
+  display: block;
+}
+
+.trashIcon {
+  cursor: pointer;
+  color: #f0a500;
+}
+
+.ggTrash {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 3));
+  width: 10px;
+  height: 12px;
+  border: 2px solid transparent;
+  margin-top: 1px;
+}
+
+.ggTrash::after,
+.ggTrash::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.ggTrash::after {
+  background: currentColor;
+  border-radius: 3px;
+  width: 16px;
+  height: 2px;
+  top: -4px;
+  left: -5px;
+}
+
+.ggTrash::before {
+  width: 10px;
+  height: 4px;
+  border: 2px solid;
+  border-bottom: transparent;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  top: -7px;
+  left: -2px;
 }
