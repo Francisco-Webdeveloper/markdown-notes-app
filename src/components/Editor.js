@@ -24,7 +24,7 @@ export default function Editor(props) {
         generateMarkdownPreview={(markdown) =>
           Promise.resolve(converter.makeHtml(markdown))
         }
-        minEditorHeight={50}
+        minEditorHeight={70}
         heightUnits="vh"
       />
     </section>

@@ -39,6 +39,12 @@
   align-items: center;
 }
 
+.unselectedNote:hover {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  background: #d3dedc;
+}
+
 .selectedNote {
   background-color: #334756;
 }

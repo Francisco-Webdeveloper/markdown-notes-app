@@ -7,7 +7,9 @@ export default function Sidebar(props) {
     <div key={note.id}>
       <div
         className={`${classes.title} ${
-          props.currentNote.id === note.id ? classes.selectedNote : ""
+          props.currentNote.id === note.id
+            ? classes.selectedNote
+            : classes.unselectedNote
         }`}
         // update the state of currentNoteId to the id of the note we are currently clicking on
         onClick={() => props.setCurrentNoteId(note.id)}
