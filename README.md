@@ -13,6 +13,7 @@ App that allows to create, change and delete notes. It also presents an editor w
 * Conditional Rendering
 * Local Storage
 * Lazy state initialization
+* External packages: React icons, React-mde, React Split, Showdown
 * Javascript Array iteration methods: forEach, map, find, filter
 
 ## Technologies
